@@ -145,6 +145,10 @@ input[type="radio"] {
   font-size: 14px; color: #7FA8CC;
   line-height: 1.5;
 }
+.optional-text {
+  font-size: 12px; color: #5A7A9A;
+  margin-top: 12px;
+}
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
@@ -178,7 +182,7 @@ input[type="radio"] {
 
     <!-- SECTION 1: Basic Info -->
     <div class="section active" id="section-1">
-      <div class="section-number">Step 1 of 7</div>
+      <div class="section-number">Step 1 of 6</div>
       <div class="question">Let's start with your contact info</div>
       <div class="input-group">
         <input type="text" name="fullName" placeholder="Full name" required>
@@ -196,7 +200,7 @@ input[type="radio"] {
 
     <!-- SECTION 2: Target Role -->
     <div class="section" id="section-2">
-      <div class="section-number">Step 2 of 7</div>
+      <div class="section-number">Step 2 of 6</div>
       <div class="question">What job title or industry are you targeting?</div>
       <p style="font-size:13px; color:#7FA8CC; margin-bottom:14px;">This helps us tailor your resume to the right audience.</p>
       <div class="input-group">
@@ -210,21 +214,21 @@ input[type="radio"] {
 
     <!-- SECTION 3: Jobs -->
     <div class="section" id="section-3">
-      <div class="section-number">Step 3 of 7</div>
-      <div class="question">Tell me about your work experience</div>
-      <p style="font-size:14px; color:#7FA8CC; margin-bottom:16px;">Start with your most recent job.</p>
+      <div class="section-number">Step 3 of 6</div>
+      <div class="question">Do you have any work experience?</div>
+      <p style="font-size:13px; color:#7FA8CC; margin-bottom:14px;">This is optional. You can add jobs or skip if you're just starting out.</p>
       <div id="jobsList"></div>
       <div id="jobForm">
         <div class="input-group">
-          <input type="text" id="jobTitle" placeholder="Job title" required>
+          <input type="text" id="jobTitle" placeholder="Job title">
         </div>
         <div class="input-group">
-          <input type="text" id="jobCompany" placeholder="Company name" required>
+          <input type="text" id="jobCompany" placeholder="Company name">
         </div>
         <div class="input-group">
-          <input type="text" id="jobDates" placeholder="Dates (e.g., Jan 2023 - Present)" required>
+          <input type="text" id="jobDates" placeholder="Dates (e.g., Jan 2023 - Present)">
         </div>
-        <button type="button" class="btn-secondary" onclick="addJob()" style="width:100%; margin-bottom:16px;">+ Add This Job</button>
+        <button type="button" class="btn-secondary" onclick="addJob()" style="width:100%; margin-bottom:16px;">+ Add Job</button>
       </div>
       <div class="button-group">
         <button type="button" class="btn-secondary" onclick="prevSection()">← Back</button>
@@ -234,7 +238,7 @@ input[type="radio"] {
 
     <!-- SECTION 4: Skills -->
     <div class="section" id="section-4">
-      <div class="section-number">Step 4 of 7</div>
+      <div class="section-number">Step 4 of 6</div>
       <div class="question">What are your key skills and strengths?</div>
       <div class="input-group">
         <textarea name="skills" placeholder="e.g., Microsoft Office, Project Management, Customer Service, Design, Leadership&#10;(One per line or comma-separated)" required></textarea>
@@ -247,7 +251,7 @@ input[type="radio"] {
 
     <!-- SECTION 5: Achievement -->
     <div class="section" id="section-5">
-      <div class="section-number">Step 5 of 7</div>
+      <div class="section-number">Step 5 of 6</div>
       <div class="question">What's your biggest professional achievement or strength?</div>
       <p style="font-size:13px; color:#7FA8CC; margin-bottom:14px;">This helps us write a powerful summary.</p>
       <div class="input-group">
@@ -259,35 +263,25 @@ input[type="radio"] {
       </div>
     </div>
 
-    <!-- SECTION 6: Education -->
+    <!-- SECTION 6: Education & Review -->
     <div class="section" id="section-6">
-      <div class="section-number">Step 6 of 7</div>
+      <div class="section-number">Step 6 of 6</div>
       <div class="question">What's your highest level of education?</div>
       <div class="input-group">
         <input type="text" name="education" placeholder="e.g., Bachelor's Degree in Marketing, High School Diploma, Certification Program" required>
       </div>
-      <div class="button-group">
-        <button type="button" class="btn-secondary" onclick="prevSection()">← Back</button>
-        <button type="button" class="btn-primary" onclick="nextSection(6)">Next →</button>
-      </div>
-    </div>
-
-    <!-- SECTION 7: Review Call -->
-    <div class="section" id="section-7">
-      <div class="section-number">Step 7 of 7</div>
-      <div class="question">Would you like us to schedule a time to review your resume together?</div>
-      <p style="font-size:13px; color:#7FA8CC; margin-bottom:14px;">We can refine it and make sure it's perfect for you.</p>
+      <div class="question" style="margin-top: 24px; font-size: 16px;">Would you like us to schedule a time to review your resume together?</div>
       <div class="radio-group">
         <label>
-          <input type="radio" name="wantReview" value="yes">
+          <input type="radio" name="wantReview" value="yes" required>
           Yes, let's schedule a time
         </label>
         <label>
-          <input type="radio" name="wantReview" value="no">
+          <input type="radio" name="wantReview" value="no" required>
           No, just build it for me
         </label>
       </div>
-      <p style="font-size:12px; color:#5A7A9A; margin-top:14px;">If you have an existing resume, email it to yidprofile@gmail.com</p>
+      <p class="optional-text">If you have an existing resume, email it to yidprofile@gmail.com</p>
       <div class="button-group">
         <button type="button" class="btn-secondary" onclick="prevSection()">← Back</button>
         <button type="submit" class="btn-primary">Submit My Info →</button>
@@ -321,7 +315,7 @@ document.getElementById('intakeForm').addEventListener('submit', function(e) {
 });
 
 function updateProgress() {
-  const progress = (currentSection / 7) * 100;
+  const progress = (currentSection / 6) * 100;
   document.getElementById('progressBar').style.width = progress + '%';
 }
 
@@ -335,7 +329,7 @@ function showSection(n) {
 function nextSection(n) {
   if (validateSection(n)) {
     currentSection = n + 1;
-    if (currentSection <= 7) {
+    if (currentSection <= 6) {
       showSection(currentSection);
     }
   }
@@ -354,13 +348,6 @@ function validateSection(n) {
     const phone = document.querySelector('input[name="phone"]').value.trim();
     const email = document.querySelector('input[name="email"]').value.trim();
     if (!name || !phone || !email) { alert('Please fill in all fields'); return false; }
-  }
-  if (n === 3) {
-    if (jobs.length === 0) { alert('Please add at least one job'); return false; }
-  }
-  if (n === 7) {
-    const wantReview = document.querySelector('input[name="wantReview"]:checked');
-    if (!wantReview) { alert('Please select an option'); return false; }
   }
   return true;
 }
